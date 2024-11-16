@@ -1,9 +1,11 @@
 document.addEventListener('turbo:load', () => {
+  const templateSelect = document.querySelector('select[name="post[template]"]');
+  const contentTextarea = document.querySelector('textarea[name="post[content]"]');
+  if (!templateSelect || !contentTextarea) return;
+
   (async () => {
     const response = await fetch('/post_templates.json');
     const templates = await response.json();
-    const templateSelect = document.querySelector('select[name="post[template]"]');
-    const contentTextarea = document.querySelector('textarea[name="post[content]"]');
     if (templateSelect && contentTextarea) {
       templateSelect.addEventListener('change', (event) => {
         const templateId = event.target.value;
