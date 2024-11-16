@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 class PostTemplateTest < ActiveSupport::TestCase
   test "should not save post template without title" do
     post_template = PostTemplate.new

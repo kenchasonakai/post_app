@@ -1,4 +1,4 @@
-require 'test_helper'
+require "test_helper"
 
 class PostTemplatesControllerTest < ActionDispatch::IntegrationTest
   setup do
@@ -14,16 +14,16 @@ class PostTemplatesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should create post_template" do
-    assert_difference('PostTemplate.count') do
-      post post_templates_url, params: { post_template: { title: 'Sample Title', content: 'Sample Content' } }
+    assert_difference("PostTemplate.count") do
+      post post_templates_url, params: { post_template: { title: "Sample Title", content: "Sample Content" } }
     end
 
     assert_redirected_to new_post_url
-    assert_equal 'テンプレートを作成しました', flash[:notice]
+    assert_equal "テンプレートを作成しました", flash[:notice]
   end
 
   test "should not create post_template with invalid params" do
-    post post_templates_url, params: { post_template: { title: '', content: '' } }
+    post post_templates_url, params: { post_template: { title: "", content: "" } }
     assert_response :unprocessable_entity
     assert_not_nil flash.now[:alert]
   end
