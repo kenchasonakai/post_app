@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   root "static_pages#top"
   resources :posts
   resources :search_tags, only: %i[index]
+  resources :post_templates, only: %i[new create index]
 end
