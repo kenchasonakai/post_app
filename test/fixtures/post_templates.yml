@@ -1,7 +1,9 @@
 one_post_template:
   title: "First Post"
   content: 'This is the body of the first post by #{user_name}.'
+  user: one_user
 
 two_post_template:
   title: "Second Post"
   content: 'This is the body of the second post #{user_name}.'
+  user: two_user

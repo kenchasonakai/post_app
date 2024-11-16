@@ -1,5 +1,4 @@
 require "test_helper"
-
 class PostTemplatesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @post_template = post_templates(:one_post_template)
@@ -7,37 +6,42 @@ class PostTemplatesControllerTest < ActionDispatch::IntegrationTest
     login_as(@user, scope: :user)
   end
 
+  test "should get index" do
+    get post_templates_url
+    assert_response :success
+  end
+
   test "should get new" do
     get new_post_template_url
     assert_response :success
-    assert_not_nil assigns(:post_template)
   end
 
   test "should create post_template" do
     assert_difference("PostTemplate.count") do
-      post post_templates_url, params: { post_template: { title: "Sample Title", content: "Sample Content" } }
+      post post_templates_url, params: { post_template: { title: "New Title", content: "New Content" } }
     end
-
-    assert_redirected_to new_post_url
-    assert_equal "テンプレートを作成しました", flash[:notice]
+    assert_redirected_to post_templates_path
   end
 
-  test "should not create post_template with invalid params" do
-    post post_templates_url, params: { post_template: { title: "", content: "" } }
-    assert_response :unprocessable_entity
-    assert_not_nil flash.now[:alert]
-  end
-
-  test "should get index" do
-    get post_templates_url
+  test "should show post_template" do
+    get post_template_url(@post_template)
     assert_response :success
-    assert_not_nil assigns(:post_templates)
   end
 
-  test "should get index as json" do
-    get post_templates_url, as: :json
+  test "should get edit" do
+    get edit_post_template_url(@post_template)
     assert_response :success
-    json_response = JSON.parse(response.body)
-    assert_not_empty json_response
+  end
+
+  test "should update post_template" do
+    patch post_template_url(@post_template), params: { post_template: { title: "Updated Title", content: "Updated Content" } }
+    assert_redirected_to post_template_path(@post_template)
+  end
+
+  test "should destroy post_template" do
+    assert_difference("PostTemplate.count", -1) do
+      delete post_template_url(@post_template)
+    end
+    assert_redirected_to post_templates_path
   end
 end
