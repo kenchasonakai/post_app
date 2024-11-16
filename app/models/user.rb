@@ -6,6 +6,7 @@ class User < ApplicationRecord
   validates :nickname, presence: true, length: { maximum: 50 }
 
   has_many :posts, dependent: :destroy
+  has_many :post_templates, dependent: :destroy
 
   def nickname_initial
     nickname.first.upcase

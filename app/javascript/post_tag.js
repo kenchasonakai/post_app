@@ -3,6 +3,8 @@ import Tagify from "@yaireo/tagify"
 ['turbo:load', 'turbo:render'].forEach((eventType) => {
   document.addEventListener(eventType, () => {
     let input = document.querySelector('#post_tag_list')
+    if (!input) return
+
     let tagify = new Tagify(input, { whitelist:[],
                                      delimiters: " ",
                                      originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(' ') })
