@@ -1,5 +1,0 @@
-scheduler:
-  schedule:
-    sample:
-      cron: "0 0 * * *"
-      class: HelloWorldJob
