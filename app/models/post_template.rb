@@ -1,6 +1,8 @@
 class PostTemplate < ApplicationRecord
   validates :title, presence: true, uniqueness: true
 
+  belongs_to :user
+
   def self.embed_contents(**kwargs)
     keys = %w[user_name]
     target_colmn = :content
