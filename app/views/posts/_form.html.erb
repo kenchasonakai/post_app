@@ -7,7 +7,7 @@
   <% end %>
   <% if post.new_record? %>
     <%= form.label :template, class: "flex items-center gap-2 mb-5 outline-none" do %>
-      <%= form.select :template, [], { include_blank: true }, class: "select select-bordered w-full" %>
+      <%= form.select :template, [], { include_blank: 'テンプレートを選んで使用できます' }, class: "select select-bordered w-full" %>
     <% end %>
   <% end %>
   <%= form.text_area :content, class: "textarea textarea-bordered w-full field-size-content min-h-80", placeholder: "好きに書いてね" %>
